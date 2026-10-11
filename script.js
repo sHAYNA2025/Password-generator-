@@ -1,5 +1,17 @@
 function generatePassword() {
     let length = document.getElementById("length").value;
+    
+let error = document.getElementById("error");
+
+if (length === "" || Number(length) < 1 ||
+    !Number.isInteger(Number(length))) {
+    error.textContent = "Invalid Number! Enter a positive whole number.";
+    document.getElementById("result").value = "";
+    return;
+}
+
+error.textContent = "";
+    
 
     let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
 
