@@ -1,26 +1,86 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Generator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <div class="container">
-        <h2>Password Generator</h2>
+        <div class="icon">🔐</div>
 
-        
-    <input type="number" id="length" min="1" 
-    step="1" placeholder="Enter Length">
-        <p id="error" style="color: red;"></p>
-        
-        
-        
+        <h1>Password Generator</h1>
+        <p class="subtitle">Create a strong password in seconds</p>
 
-        <button onclick="generatePassword()">Generate Password</button>
+        <label for="length">Password Length</label>
 
-        <input type="text" id="result" readonly>
+        <input
+            type="number"
+            id="length"
+            min="1"
+            max="128"
+            step="1"
+            value="12"
+            placeholder="Enter length"
+        >
 
-        <button onclick="copyPassword()">Copy Password</button>
+        <div class="options">
+            <label class="option">
+                <input type="checkbox" id="uppercase" checked>
+                Uppercase (A-Z)
+            </label>
+
+            <label class="option">
+                <input type="checkbox" id="lowercase" checked>
+                Lowercase (a-z)
+            </label>
+
+            <label class="option">
+                <input type="checkbox" id="numbers" checked>
+                Numbers (0-9)
+            </label>
+
+            <label class="option">
+                <input type="checkbox" id="symbols" checked>
+                Symbols (!@#$)
+            </label>
+        </div>
+
+        <button class="generate-btn" onclick="generatePassword()">
+            Generate Password ✨
+        </button>
+
+        <p id="message" role="status"></p>
+
+        <label for="result">Your Password</label>
+
+        <div class="password-box">
+            <input
+                type="text"
+                id="result"
+                placeholder="Your password will appear here"
+                readonly
+            >
+            <button class="copy-btn" onclick="copyPassword()" aria-label="Copy password">
+                📋
+            </button>
+        </div>
+
+        <div class="strength-area">
+            <div class="strength-header">
+                <span>Password Strength</span>
+                <span id="strength-text">Not generated</span>
+            </div>
+
+            <div class="strength-track">
+                <div id="strength-bar"></div>
+            </div>
+        </div>
+
+        <p class="footer">🔒 Your password is generated in your browser</p>
     </div>
 
     <script src="script.js"></script>
